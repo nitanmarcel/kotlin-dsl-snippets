@@ -102,6 +102,13 @@ class XposedDSL {
     }
 
     /**
+     * Launches a coroutine within the Xposed framework environment.
+     */
+    fun launch(block: suspend CoroutineScope.() -> Unit) = CoroutineScope(Dispatchers.IO).launch {
+        block()
+    }
+
+    /**
      * Logs a custom message in the Xposed log.
      */
     fun log(message: String) {
